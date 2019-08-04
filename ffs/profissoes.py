@@ -1,7 +1,8 @@
 import requests
 import sys
+from models.profissao_autor import ProfissaoAutor
 from bs4 import BeautifulSoup
-import '../db'
+import db
 
 
 indice_profissao = 0
@@ -18,8 +19,10 @@ while(indice_profissao<len(profissoes)):
     # Se o retorno for alcançável, processa
     if(req.status_code==200):
         soup = BeautifulSoup(req.text, 'html.parser')
+        profissao = soup.find()
         a_list = soup.find_all("a", rel='twipsy')
         for a in a_list:
             autor = a.get_text()
+            db.session.query(ProfissaoAutor).filter(ProfissaoAutor.profissao_autor == categoria)
     
     indice_profissao += 1
