@@ -15,8 +15,8 @@ class ProfissoesAutores(model.base):
 
     __tablename__ = "profissoes_autores"
 
-    id_profissao_autor = Column(Integer)
-    id_autor = Column(Integer)
+    id_profissao_autor = Column(Integer, primary_key=True)
+    id_autor = Column(Integer, primary_key=True)
 
     def __repr__(self):
         return "<Profissão Autr(id_profissao_autor='%s', profissao_autor='%s')>" % (
