@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-import model
+from . import model
 
 
 class ProfissaoAutor(model.base):

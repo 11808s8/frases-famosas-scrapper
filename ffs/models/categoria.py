@@ -1,4 +1,4 @@
-import model
+from . import model
 from sqlalchemy import Column, String  , Integer
 
 class Categoria(model.base):     

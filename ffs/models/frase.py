@@ -1,4 +1,4 @@
-import model
+from . import model
 from sqlalchemy import Column, String  , Integer, DateTime, Boolean
 from datetime import datetime
 
