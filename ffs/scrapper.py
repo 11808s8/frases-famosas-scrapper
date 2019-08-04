@@ -1,8 +1,8 @@
 import requests
 import db
-from categoria import Categoria
-from autor import Autor
-from frase import Frase
+# from categoria import Categoria
+# from autor import Autor
+# from frase import Frase
 from bs4 import BeautifulSoup
 
 numero_pagina=1
