@@ -3,3 +3,4 @@ sqlalchemy
 beautifulsoup4
 alembic
 psycopg2
+unidecode
