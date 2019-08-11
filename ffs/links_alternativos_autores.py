@@ -6,37 +6,28 @@ import requests
 from request import Request
 import re
 
-# indice_profissao = 1
-# profissoes = sys.argv
-# print(profissoes)
-# qual_profissao = profissoes[indice_profissao]
-
 reqs = Request('https://www.frasesfamosas.com.br')
 reqs.adiciona_url_completo('frases_autores', 'frases-de/')
 reqs.adiciona_url_completo('buscar_frases', 'buscar-frases/')
 
 autores = db.session.query(Autor)
 ultimo_autor_com_link_alternativo = db.session.query(Autor).filter(Autor.link_alternativo_autor!='' or Autor.link_alternativo_autor!=None).order_by(Autor.id_autor.desc()).first()
-# print(ultimo_com_link_alternativo)
-# exit()
 
 for autor in autores:
     if(ultimo_autor_com_link_alternativo== None or autor.id_autor>ultimo_autor_com_link_alternativo.id_autor):
-        
+
         nome_autor_unicode = autor.autor
         
 
         nome_autor_lowercase = nome_autor_unicode.lower()
         
         nome_autor_tratado = re.sub(r"[^a-zA-Z0-9 -çÇáàÁÀéèÉÈíìÍÌóòÓÒúùÚÙâãÂÃêẽÊẼĩĨîÎõÕÔôũŨÛûöÖōñÑüÜïÏäÄëË]+[°ºª]",'', nome_autor_lowercase)
-        # nome_autor_tratado = re.sub(r"",'', nome_autor_sem_chars_especiais)
         
         nome_autor_correto = nome_autor_tratado.replace(' ', '-')
         
         caminho = '{0}/'.format(nome_autor_correto)
         req = reqs.one_request(caminho, 'frases_autores','head')
         
-        # print(req.url)
         if(req.status_code!=200):
             print(nome_autor_lowercase)
             
@@ -60,22 +51,5 @@ for autor in autores:
                 autor.link_alternativo_autor = link_alternativo_autor
                 db.session.commit()
 
-                # autor.link_alternativo_autor
-                # db.session.update()
     else:
         pass
-        
-            
-
-
-    # print()
-exit()
-
-
-# print(url_completo)
-# req = requests.get(url_completo)
-# # print(req.status_code)
-
-# # executará com todas as profissões passadas pela linha de comando
-# while(indice_profissao<=(len(profissoes)-1)):
-#     pass
