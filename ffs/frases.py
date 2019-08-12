@@ -14,6 +14,12 @@ reqs.adiciona_url_completo('frase_completa', 'frase/')
 
 autores = db.session.query(Autor).order_by(Autor.id_autor.asc())
 
+# autores bloquear:
+# donald j trump
+# sergio fernando moro
+
+
+
 for autor in autores:
     # print(autor.link_alternativo_autor)
     if(autor.link_alternativo_autor!=None):
