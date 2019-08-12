@@ -18,7 +18,8 @@ autores = db.session.query(Autor).order_by(Autor.id_autor.asc())
 # donald j trump
 # sergio fernando moro
 
-
+total_autores = len(autores)
+autor_atual = 1
 
 for autor in autores:
     # print(autor.link_alternativo_autor)
@@ -129,10 +130,13 @@ for autor in autores:
                 req = reqs.one_request(caminho_prox_pagina, 'frases_autores','get')
                 soup = BeautifulSoup(req.text, 'html.parser')
                 posts = soup.find_all('div', class_='post')
+                print("Autor {0} pagina atual {1} ultima pagina {2}".format(autor.autor, nro_proxima_pagina, nro_ultima_pagina))
                 nro_proxima_pagina+=1
                 # print(nro_proxima_pagina)
                 # print(nro_ultima_pagina)
-                print("Autor {0} pagina atual {1} ultima pagina {2}".format(autor.autor, nro_proxima_pagina, nro_ultima_pagina))
+                
+                
+        print("Autor nro {0}/{1}".format(autor_atual,total_autores))
                 
         
 
