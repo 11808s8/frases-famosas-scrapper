@@ -36,7 +36,7 @@ def upgrade():
         sa.Column('frase', sa.String, nullable=True),
         sa.Column('id_autor', sa.Integer, sa.ForeignKey("autor.id_autor"), nullable=False),
         sa.Column('id_categoria', sa.Integer, sa.ForeignKey("categoria.id_categoria"),nullable=False),
-        sa.Column('date_create', sa.DateTime, nullable=False),
+        sa.Column('date_created', sa.DateTime, nullable=False),
         sa.Column('usado', sa.Boolean, nullable=True)
     )
 
