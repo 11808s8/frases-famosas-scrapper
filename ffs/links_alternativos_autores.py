@@ -2,7 +2,6 @@ from bs4 import BeautifulSoup
 from models.autor import Autor
 import unidecode
 import db
-import requests
 from request import Request
 import re
 
